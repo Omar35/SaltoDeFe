@@ -1,0 +1,45 @@
+﻿@model IEnumerable<CineSaltoDeFe.Models.proyeccion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pro_horaInicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pro_horaFin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pelicula.pel_nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pro_horaInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pro_horaFin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pelicula.pel_nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.pro_idProyeccion }) |
+            @Html.ActionLink("Details", "Details", new { id=item.pro_idProyeccion }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.pro_idProyeccion })
+        </td>
+    </tr>
+}
+
+</table>

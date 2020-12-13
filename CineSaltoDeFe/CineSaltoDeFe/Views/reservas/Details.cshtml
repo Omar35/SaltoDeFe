@@ -1,0 +1,74 @@
+﻿@model CineSaltoDeFe.Models.reserva
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>reserva</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.res_boletos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.res_boletos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.res_costoTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.res_costoTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente.cl_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente.cl_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente1.cl_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente1.cl_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente2.cl_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente2.cl_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.proyeccion.pro_horaInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.proyeccion.pro_horaInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sala.sal_idSala)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sala.sal_idSala)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.res_idReserva }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

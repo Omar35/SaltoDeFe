@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="cineModelStoreContainer" CdmEntityContainer="cineEntities">
+    <EntitySetMapping Name="cliente">
+      <EntityTypeMapping TypeName="cineModel.cliente">
+        <MappingFragment StoreEntitySet="cliente">
+          <ScalarProperty Name="cl_idCliente" ColumnName="cl_idCliente" />
+          <ScalarProperty Name="cl_nombre" ColumnName="cl_nombre" />
+          <ScalarProperty Name="cl_apellido1" ColumnName="cl_apellido1" />
+          <ScalarProperty Name="cl_apellido2" ColumnName="cl_apellido2" />
+          <ScalarProperty Name="cl_telefono" ColumnName="cl_telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="funcion">
+      <EntityTypeMapping TypeName="cineModel.funcion">
+        <MappingFragment StoreEntitySet="funcion">
+          <ScalarProperty Name="fun_idFuncion" ColumnName="fun_idFuncion" />
+          <ScalarProperty Name="pro_idProyeccion" ColumnName="pro_idProyeccion" />
+          <ScalarProperty Name="sal_idSala" ColumnName="sal_idSala" />
+          <ScalarProperty Name="fun_horario" ColumnName="fun_horario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pelicula">
+      <EntityTypeMapping TypeName="cineModel.pelicula">
+        <MappingFragment StoreEntitySet="pelicula">
+          <ScalarProperty Name="pel_idPel" ColumnName="pel_idPel" />
+          <ScalarProperty Name="pel_nombre" ColumnName="pel_nombre" />
+          <ScalarProperty Name="pel_clasificacion" ColumnName="pel_clasificacion" />
+          <ScalarProperty Name="pel_idioma" ColumnName="pel_idioma" />
+          <ScalarProperty Name="pel_detalle" ColumnName="pel_detalle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="proyeccion">
+      <EntityTypeMapping TypeName="cineModel.proyeccion">
+        <MappingFragment StoreEntitySet="proyeccion">
+          <ScalarProperty Name="pro_idProyeccion" ColumnName="pro_idProyeccion" />
+          <ScalarProperty Name="pro_horaInicio" ColumnName="pro_horaInicio" />
+          <ScalarProperty Name="pro_horaFin" ColumnName="pro_horaFin" />
+          <ScalarProperty Name="pel_idPeli" ColumnName="pel_idPeli" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reserva">
+      <EntityTypeMapping TypeName="cineModel.reserva">
+        <MappingFragment StoreEntitySet="reserva">
+          <ScalarProperty Name="res_idReserva" ColumnName="res_idReserva" />
+          <ScalarProperty Name="cl_idCliente" ColumnName="cl_idCliente" />
+          <ScalarProperty Name="pro_idProyeccion" ColumnName="pro_idProyeccion" />
+          <ScalarProperty Name="res_boletos" ColumnName="res_boletos" />
+          <ScalarProperty Name="res_costoTotal" ColumnName="res_costoTotal" />
+          <ScalarProperty Name="sal_idSala" ColumnName="sal_idSala" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="cineModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sala">
+      <EntityTypeMapping TypeName="cineModel.sala">
+        <MappingFragment StoreEntitySet="sala">
+          <ScalarProperty Name="sal_idSala" ColumnName="sal_idSala" />
+          <ScalarProperty Name="sal_numeroSala" ColumnName="sal_numeroSala" />
+          <ScalarProperty Name="sal_numeroAsientos" ColumnName="sal_numeroAsientos" />
+          <ScalarProperty Name="suc_idSucursal" ColumnName="suc_idSucursal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sucursal">
+      <EntityTypeMapping TypeName="cineModel.sucursal">
+        <MappingFragment StoreEntitySet="sucursal">
+          <ScalarProperty Name="suc_idSucursal" ColumnName="suc_idSucursal" />
+          <ScalarProperty Name="suc_nombre" ColumnName="suc_nombre" />
+          <ScalarProperty Name="suc_provincia" ColumnName="suc_provincia" />
+          <ScalarProperty Name="suc_telefono" ColumnName="suc_telefono" />
+          <ScalarProperty Name="suc_direccion" ColumnName="suc_direccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="cineModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UsersInRoles" TypeName="cineModel.UsersInRoles" StoreEntitySet="UsersInRoles">
+      <EndProperty Name="Roles">
+        <ScalarProperty Name="RoleId" ColumnName="Role_RoleId" />
+      </EndProperty>
+      <EndProperty Name="Users">
+        <ScalarProperty Name="UserId" ColumnName="User_UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="sp_getRolesForUser" FunctionName="cineModel.Store.sp_getRolesForUser" />
+    <FunctionImportMapping FunctionImportName="sp_getUsuariosRole" FunctionName="cineModel.Store.sp_getUsuariosRole" />
+    <FunctionImportMapping FunctionImportName="sp_isUserInRole" FunctionName="cineModel.Store.sp_isUserInRole" />
+  </EntityContainerMapping>
+</Mapping>

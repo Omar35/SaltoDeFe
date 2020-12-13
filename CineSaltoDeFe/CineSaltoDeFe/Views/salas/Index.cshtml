@@ -1,0 +1,45 @@
+﻿@model IEnumerable<CineSaltoDeFe.Models.sala>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.sal_numeroSala)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sal_numeroAsientos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sucursal.suc_nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.sal_numeroSala)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sal_numeroAsientos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sucursal.suc_nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.sal_idSala }) |
+            @Html.ActionLink("Details", "Details", new { id=item.sal_idSala }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.sal_idSala })
+        </td>
+    </tr>
+}
+
+</table>

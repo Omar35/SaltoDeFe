@@ -1,0 +1,45 @@
+﻿@model IEnumerable<CineSaltoDeFe.Models.funcion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fun_horario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.proyeccion.pro_horaInicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sala.sal_idSala)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fun_horario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.proyeccion.pro_horaInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sala.sal_idSala)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.fun_idFuncion }) |
+            @Html.ActionLink("Details", "Details", new { id=item.fun_idFuncion }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.fun_idFuncion })
+        </td>
+    </tr>
+}
+
+</table>

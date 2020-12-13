@@ -1,0 +1,48 @@
+﻿@model CineSaltoDeFe.Models.funcion
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>funcion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fun_horario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fun_horario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.proyeccion.pro_horaInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.proyeccion.pro_horaInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sala.sal_idSala)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sala.sal_idSala)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

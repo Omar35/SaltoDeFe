@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="cineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="cl_idCliente" />
+    </Key>
+    <Property Name="cl_idCliente" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="cl_nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="cl_apellido1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="cl_apellido2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="cl_telefono" Type="Decimal" Precision="8" Scale="0" />
+    <NavigationProperty Name="reserva" Relationship="Self.FK__reserva__cl_idCl__5535A963" FromRole="cliente" ToRole="reserva" />
+    <NavigationProperty Name="reserva1" Relationship="Self.FK__reserva__cl_idCl__5BE2A6F2" FromRole="cliente" ToRole="reserva" />
+    <NavigationProperty Name="reserva2" Relationship="Self.FK__reserva__cl_idCl__5CD6CB2B" FromRole="cliente" ToRole="reserva" />
+  </EntityType>
+  <EntityType Name="funcion">
+    <Key>
+      <PropertyRef Name="fun_idFuncion" />
+    </Key>
+    <Property Name="fun_idFuncion" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="pro_idProyeccion" Type="Decimal" Precision="9" Scale="0" />
+    <Property Name="sal_idSala" Type="Decimal" Precision="9" Scale="0" />
+    <Property Name="fun_horario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="proyeccion" Relationship="Self.FK__funcion__pro_idP__59063A47" FromRole="funcion" ToRole="proyeccion" />
+    <NavigationProperty Name="sala" Relationship="Self.FK__funcion__sal_idS__5812160E" FromRole="funcion" ToRole="sala" />
+  </EntityType>
+  <EntityType Name="pelicula">
+    <Key>
+      <PropertyRef Name="pel_idPel" />
+    </Key>
+    <Property Name="pel_idPel" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="pel_nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="pel_clasificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="pel_idioma" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="pel_detalle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="proyeccion" Relationship="Self.FK__proyeccio__pel_i__5AEE82B9" FromRole="pelicula" ToRole="proyeccion" />
+  </EntityType>
+  <EntityType Name="proyeccion">
+    <Key>
+      <PropertyRef Name="pro_idProyeccion" />
+    </Key>
+    <Property Name="pro_idProyeccion" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="pro_horaInicio" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="pro_horaFin" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="pel_idPeli" Type="Decimal" Precision="9" Scale="0" />
+    <NavigationProperty Name="funcion" Relationship="Self.FK__funcion__pro_idP__59063A47" FromRole="proyeccion" ToRole="funcion" />
+    <NavigationProperty Name="pelicula" Relationship="Self.FK__proyeccio__pel_i__5AEE82B9" FromRole="proyeccion" ToRole="pelicula" />
+    <NavigationProperty Name="reserva" Relationship="Self.FK__reserva__pro_idP__59FA5E80" FromRole="proyeccion" ToRole="reserva" />
+  </EntityType>
+  <EntityType Name="reserva">
+    <Key>
+      <PropertyRef Name="res_idReserva" />
+    </Key>
+    <Property Name="res_idReserva" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="cl_idCliente" Type="Decimal" Precision="9" Scale="0" />
+    <Property Name="pro_idProyeccion" Type="Decimal" Precision="9" Scale="0" />
+    <Property Name="res_boletos" Type="Decimal" Precision="9" Scale="0" />
+    <Property Name="res_costoTotal" Type="Decimal" Precision="9" Scale="0" />
+    <Property Name="sal_idSala" Type="Decimal" Precision="9" Scale="0" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__reserva__cl_idCl__5535A963" FromRole="reserva" ToRole="cliente" />
+    <NavigationProperty Name="cliente1" Relationship="Self.FK__reserva__cl_idCl__5BE2A6F2" FromRole="reserva" ToRole="cliente" />
+    <NavigationProperty Name="cliente2" Relationship="Self.FK__reserva__cl_idCl__5CD6CB2B" FromRole="reserva" ToRole="cliente" />
+    <NavigationProperty Name="proyeccion" Relationship="Self.FK__reserva__pro_idP__59FA5E80" FromRole="reserva" ToRole="proyeccion" />
+    <NavigationProperty Name="sala" Relationship="Self.FK__reserva__sal_idS__5629CD9C" FromRole="reserva" ToRole="sala" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Users" Relationship="Self.UsersInRoles" FromRole="Roles" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="sala">
+    <Key>
+      <PropertyRef Name="sal_idSala" />
+    </Key>
+    <Property Name="sal_idSala" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="sal_numeroSala" Type="Decimal" Precision="9" Scale="0" />
+    <Property Name="sal_numeroAsientos" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="suc_idSucursal" Type="Decimal" Precision="9" Scale="0" />
+    <NavigationProperty Name="funcion" Relationship="Self.FK__funcion__sal_idS__5812160E" FromRole="sala" ToRole="funcion" />
+    <NavigationProperty Name="reserva" Relationship="Self.FK__reserva__sal_idS__5629CD9C" FromRole="sala" ToRole="reserva" />
+    <NavigationProperty Name="sucursal" Relationship="Self.FK__sala__suc_idSucu__571DF1D5" FromRole="sala" ToRole="sucursal" />
+  </EntityType>
+  <EntityType Name="sucursal">
+    <Key>
+      <PropertyRef Name="suc_idSucursal" />
+    </Key>
+    <Property Name="suc_idSucursal" Type="Decimal" Precision="9" Scale="0" Nullable="false" />
+    <Property Name="suc_nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="suc_provincia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="suc_telefono" Type="Decimal" Precision="9" Scale="0" />
+    <Property Name="suc_direccion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="sala" Relationship="Self.FK__sala__suc_idSucu__571DF1D5" FromRole="sucursal" ToRole="sala" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Roles" Relationship="Self.UsersInRoles" FromRole="Users" ToRole="Roles" />
+  </EntityType>
+  <Association Name="FK__reserva__cl_idCl__5535A963">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="reserva" Type="Self.reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="cl_idCliente" />
+      </Principal>
+      <Dependent Role="reserva">
+        <PropertyRef Name="cl_idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__reserva__cl_idCl__5BE2A6F2">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="reserva" Type="Self.reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="cl_idCliente" />
+      </Principal>
+      <Dependent Role="reserva">
+        <PropertyRef Name="cl_idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__reserva__cl_idCl__5CD6CB2B">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="reserva" Type="Self.reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="cl_idCliente" />
+      </Principal>
+      <Dependent Role="reserva">
+        <PropertyRef Name="cl_idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__funcion__pro_idP__59063A47">
+    <End Role="proyeccion" Type="Self.proyeccion" Multiplicity="0..1" />
+    <End Role="funcion" Type="Self.funcion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proyeccion">
+        <PropertyRef Name="pro_idProyeccion" />
+      </Principal>
+      <Dependent Role="funcion">
+        <PropertyRef Name="pro_idProyeccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__funcion__sal_idS__5812160E">
+    <End Role="sala" Type="Self.sala" Multiplicity="0..1" />
+    <End Role="funcion" Type="Self.funcion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sala">
+        <PropertyRef Name="sal_idSala" />
+      </Principal>
+      <Dependent Role="funcion">
+        <PropertyRef Name="sal_idSala" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__proyeccio__pel_i__5AEE82B9">
+    <End Role="pelicula" Type="Self.pelicula" Multiplicity="0..1" />
+    <End Role="proyeccion" Type="Self.proyeccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pelicula">
+        <PropertyRef Name="pel_idPel" />
+      </Principal>
+      <Dependent Role="proyeccion">
+        <PropertyRef Name="pel_idPeli" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__reserva__pro_idP__59FA5E80">
+    <End Role="proyeccion" Type="Self.proyeccion" Multiplicity="0..1" />
+    <End Role="reserva" Type="Self.reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proyeccion">
+        <PropertyRef Name="pro_idProyeccion" />
+      </Principal>
+      <Dependent Role="reserva">
+        <PropertyRef Name="pro_idProyeccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__reserva__sal_idS__5629CD9C">
+    <End Role="sala" Type="Self.sala" Multiplicity="0..1" />
+    <End Role="reserva" Type="Self.reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sala">
+        <PropertyRef Name="sal_idSala" />
+      </Principal>
+      <Dependent Role="reserva">
+        <PropertyRef Name="sal_idSala" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sala__suc_idSucu__571DF1D5">
+    <End Role="sucursal" Type="Self.sucursal" Multiplicity="0..1" />
+    <End Role="sala" Type="Self.sala" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sucursal">
+        <PropertyRef Name="suc_idSucursal" />
+      </Principal>
+      <Dependent Role="sala">
+        <PropertyRef Name="suc_idSucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UsersInRoles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="cineEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="cliente" EntityType="Self.cliente" />
+    <EntitySet Name="funcion" EntityType="Self.funcion" />
+    <EntitySet Name="pelicula" EntityType="Self.pelicula" />
+    <EntitySet Name="proyeccion" EntityType="Self.proyeccion" />
+    <EntitySet Name="reserva" EntityType="Self.reserva" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
+    <EntitySet Name="sala" EntityType="Self.sala" />
+    <EntitySet Name="sucursal" EntityType="Self.sucursal" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK__reserva__cl_idCl__5535A963" Association="Self.FK__reserva__cl_idCl__5535A963">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="reserva" EntitySet="reserva" />
+    </AssociationSet>
+    <AssociationSet Name="FK__reserva__cl_idCl__5BE2A6F2" Association="Self.FK__reserva__cl_idCl__5BE2A6F2">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="reserva" EntitySet="reserva" />
+    </AssociationSet>
+    <AssociationSet Name="FK__reserva__cl_idCl__5CD6CB2B" Association="Self.FK__reserva__cl_idCl__5CD6CB2B">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="reserva" EntitySet="reserva" />
+    </AssociationSet>
+    <AssociationSet Name="FK__funcion__pro_idP__59063A47" Association="Self.FK__funcion__pro_idP__59063A47">
+      <End Role="proyeccion" EntitySet="proyeccion" />
+      <End Role="funcion" EntitySet="funcion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__funcion__sal_idS__5812160E" Association="Self.FK__funcion__sal_idS__5812160E">
+      <End Role="sala" EntitySet="sala" />
+      <End Role="funcion" EntitySet="funcion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__proyeccio__pel_i__5AEE82B9" Association="Self.FK__proyeccio__pel_i__5AEE82B9">
+      <End Role="pelicula" EntitySet="pelicula" />
+      <End Role="proyeccion" EntitySet="proyeccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__reserva__pro_idP__59FA5E80" Association="Self.FK__reserva__pro_idP__59FA5E80">
+      <End Role="proyeccion" EntitySet="proyeccion" />
+      <End Role="reserva" EntitySet="reserva" />
+    </AssociationSet>
+    <AssociationSet Name="FK__reserva__sal_idS__5629CD9C" Association="Self.FK__reserva__sal_idS__5629CD9C">
+      <End Role="sala" EntitySet="sala" />
+      <End Role="reserva" EntitySet="reserva" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sala__suc_idSucu__571DF1D5" Association="Self.FK__sala__suc_idSucu__571DF1D5">
+      <End Role="sucursal" EntitySet="sucursal" />
+      <End Role="sala" EntitySet="sala" />
+    </AssociationSet>
+    <AssociationSet Name="UsersInRoles" Association="Self.UsersInRoles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <FunctionImport Name="sp_getRolesForUser" ReturnType="Collection(String)">
+      <Parameter Name="userName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getUsuariosRole" ReturnType="Collection(String)">
+      <Parameter Name="roleName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_isUserInRole" ReturnType="Collection(Boolean)">
+      <Parameter Name="userName" Mode="In" Type="String" />
+      <Parameter Name="roleName" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7e8c93610f8b4cf28ac2454bdeb39e5b" Name="Diagram1">
+        <EntityTypeShape EntityType="cineModel.cliente" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cineModel.funcion" Width="1.5" PointX="4" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cineModel.pelicula" Width="1.5" PointX="1.5" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cineModel.proyeccion" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="cineModel.reserva" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="cineModel.Roles" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="cineModel.sala" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cineModel.sucursal" Width="1.5" PointX="1.5" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cineModel.Users" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="cineModel.FK__reserva__cl_idCl__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="cineModel.FK__reserva__cl_idCl__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="cineModel.FK__reserva__cl_idCl__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="cineModel.FK__funcion__pro_idP__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="cineModel.FK__funcion__sal_idS__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="cineModel.FK__proyeccio__pel_i__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="cineModel.FK__reserva__pro_idP__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="cineModel.FK__reserva__sal_idS__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="cineModel.FK__sala__suc_idSucu__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="cineModel.UsersInRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

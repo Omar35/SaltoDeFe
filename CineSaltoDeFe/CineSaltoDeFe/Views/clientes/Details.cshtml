@@ -1,0 +1,50 @@
+﻿@model CineSaltoDeFe.Models.cliente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cl_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cl_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cl_apellido1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cl_apellido1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cl_apellido2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cl_apellido2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cl_telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cl_telefono)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cl_idCliente }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

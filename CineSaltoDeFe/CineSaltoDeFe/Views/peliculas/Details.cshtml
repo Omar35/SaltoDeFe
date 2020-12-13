@@ -1,0 +1,50 @@
+﻿@model CineSaltoDeFe.Models.pelicula
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>pelicula</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.pel_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pel_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pel_clasificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pel_clasificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pel_idioma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pel_idioma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pel_detalle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pel_detalle)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.pel_idPel }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
