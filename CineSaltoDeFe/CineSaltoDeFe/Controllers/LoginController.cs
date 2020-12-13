@@ -27,12 +27,12 @@ namespace CineSaltoDeFe.Controllers
             connectionString();
             con.Open();
             com.Connection = con;
-            com.CommandText = "Select * from Users where username ='"+log.Nombre+ "'and password ='" + log.contrasena+ "'";
+            com.CommandText = "Select into nombre,Password from Users where username ='"+log.Nombre+ "'and password ='" + log.contrasena+ "'";
             dr = com.ExecuteReader();
             if (dr.Read())
             {
                 con.Close();
-                return View();
+                return View("Catelera");
             }
             else
             {
